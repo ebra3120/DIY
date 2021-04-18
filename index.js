@@ -6,9 +6,9 @@ module.exports = class extends Page {
         super({title:"Home", sName:"Saahil Ebrahim"});
     }
     render(sPage) {
-        const oJson = fetch("https://ux308-de416-default-rtdb.firebaseio.com/meals.json").json();
+        const oJson = fetch("https://final-exam1-2fd70-default-rtdb.firebaseio.com/meals.json").json();
         console.log(oJson);
-        let sResult = "<h1>DIY-Kits</h1>";
+        let sResult = "<h1>DIY Kits</h1>";
         Object.keys(oJson).map((key) => {
             const oEntity = oJson[key];
             console.log(oEntity);
@@ -16,9 +16,9 @@ module.exports = class extends Page {
             sResult += `
             <h2>${oEntity.title}</h2>
             <p><img src="${oEntity.featured_image}" alt="${oEntity.title}"</p>
-            <p>"${oEntity.meal_date}"</p>
-            <p>"${oEntity.meal_location}"</p>
             <p>${oEntity.full_description}</p>
+            <p>${oEntity.Build_time}</p>
+            <p>${oEntity.Difficulty_level}</p>
             <form action="https://payment-ebra.herokuapp.com/payment" method="post">
             <input type="hidden" name="title" value="${oEntity.title}" />
             <input type="hidden" name="price" value="21" />
